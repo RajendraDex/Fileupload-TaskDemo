@@ -1,0 +1,1 @@
+module.exports.fileuploadController=require('./fileupload.controller');

@@ -1,0 +1,324 @@
+ForEach:
+
+.forEach(), is used to execute the same code on every element in an array but does not change the array and it returns undefined.
+Example:
+In the example below we would use .forEach() to iterate over an array of food and log that we would want to eat each of them.
+ 
+let food = ['mango', 'rice', 'pepper', 'pear'];
+food.forEach((foodItem) => {
+console.log('I want to eat ' + foodItem);});
+
+Output:
+I want to eat mango
+I want to eat rice  
+I want to eat pepper
+I want to eat pear 
+
+
+Map:
+
+.map() executes the same code on every element in an array and returns a new array with the updated elements.
+Example:
+In the example below we would use .map to iterate over the elements of the cost array and divide each element by 10, then assign our new array containing the new cost to the variable newCost.
+ 
+let cost = [100, 400, 300, 700];
+let newCost = cost.map((costItem) => {
+    return costItem / 10;
+});
+console.log(newCost);
+ 
+ 
+
+Filter:
+
+.filter() checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria.
+Example:
+In the example below we would use .filter to return values that are less than 200.
+ 
+let cost1 = [100, 400, 50, 40, 700];
+let newCost = cost1.filter((costItem) => {
+    return costItem / 10;
+});
+console.log(newCost);
+ 
+
+
+
+	
+For...of:
+
+The for...of statement creates a loop iterating over iterable objects, including: built-in String, Array, array-like objects (e.g., arguments or NodeList),
+ TypedArray, Map, Set, and user-defined iterables. 
+ It invokes a custom iteration hook with statements to be executed for the value of each distinct property of the object.
+ 
+Syntax
+for (variable of iterable) {
+  statement
+}
+
+variable
+On each iteration a value of a different property is assigned to variable. variable may be declared with const, let, or var.
+
+iterable
+Object whose iterable properties are iterated.
+
+Example
+
+const array1 = ['a', 'b', 'c'];
+
+for (const element of array1) {
+  console.log(element);
+}
+
+// expected output: "a"
+// expected output: "b"
+// expected output: "c"
+
+
+Iterating over an Array
+const iterable = [10, 20, 30];
+
+for (const value of iterable) {
+  console.log(value);
+}
+// 10
+// 20
+// 30
+
+You can use let instead of const too, if you reassign the variable inside the block.
+
+const iterable = [10, 20, 30];
+
+for (let value of iterable) {
+  value += 1;
+  console.log(value);
+}
+// 11
+// 21
+// 31
+
+
+Iterating over a String
+const iterable = 'boo';
+
+for (const value of iterable) {
+  console.log(value);
+}
+// "b"
+// "o"
+// "o"
+
+
+Iterating over a Map
+const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+for (const entry of iterable) {
+  console.log(entry);
+}
+// ['a', 1]
+// ['b', 2]
+// ['c', 3]
+
+for (const [key, value] of iterable) {
+  console.log(value);
+}
+// 1
+// 2
+// 3
+
+
+Iterating over a Set
+const iterable = new Set([1, 1, 2, 2, 3, 3]);
+
+for (const value of iterable) {
+  console.log(value);
+}
+// 1
+// 2
+// 3
+
+
+Iterating over the arguments object
+You can iterate over the arguments object to examine all of the parameters passed into a JavaScript function:
+
+(function() {
+  for (const argument of arguments) {
+    console.log(argument);
+  }
+})(1, 2, 3);
+
+// 1
+// 2
+// 3
+
+
+For...in
+The for...in statement iterates over the properties of an object.
+The for...in statement iterates over all enumerable properties of an object that are keyed by strings (ignoring ones keyed by Symbols), 
+including inherited enumerable properties.
+
+
+Syntax
+for (variable in object) {
+  statement
+}
+
+variable
+A different property name is assigned to variable on each iteration.
+
+object
+Object whose non-Symbol enumerable properties are iterated over.
+
+Why Use for...in?
+Given that for...in is built for iterating object properties, not recommended for use with arrays, 
+and options like Array.prototype.forEach() and for...of exist, what might be the use of for...in at all?
+
+It may be most practically used for debugging purposes, being an easy way to check the properties of an object (by outputting to the console or otherwise).
+Although arrays are often more practical for storing data, in situations where a key-value pair is preferred for working with data (with properties acting
+as the "key"), there may be instances where you want to check if any of those keys hold a particular value.
+
+Examples
+Using for...in
+The for...in loop below iterates over all of the object's enumerable, non-Symbol properties and logs a string of the property names and their values.
+
+var obj = {a: 1, b: 2, c: 3};
+
+for (const prop in obj) {
+  console.log(`obj.${prop} = ${obj[prop]}`);
+}
+
+// Output:
+// "obj.a = 1"
+// "obj.b = 2"
+// "obj.c = 3"
+
+
+
+
+
+What even are JavaScript Array Methods?
+Now that you're getting started with the basics of JavaScript, at some point soon you'll likely come across three seemingly magical words in many code examples: .forEach(), .map() and .filter(). When you go to loop through (or iterate through) an array, the first thing you think of is probably a for loop. .forEach(), .map() and .filter() are all just other ways of iterating through arrays to perform a specific task on each element of the array, and are called methods.
+Why should we use Array Methods?
+We write less code, leaving less opportunity for bugs
+.forEach() literally says what it is going to do (similarly .map() and .filter() do pretty much what they say on the tin!)
+It is more readable and intuitive than a for loop – we can name the variable representing each element of the array. For example, number is much nicer to read than numbers[i], and if it was an array of people, you could name the parameter person rather than having to use people[i]
+.forEach()
+What is it?
+The .forEach() method is the most similar to the for loop. The two examples of code below essentially do the same thing:
+const Numbers = [1,2,3,4,5];
+for(let i=0;i<numbers.length;i++)
+{
+ console.log(number[i])
+}
+
+Output 
+1 2 3 4 5
+
+
+const Numbers = [2, 10, 3];
+Numbers.forEach((number) => {
+    console.log(number)
+})
+
+Output
+2
+10
+3
+
+The function inside the parentheses of the .forEach() is simply executed "for each" element of the array.
+When should I use this?
+.forEach() is a very generic array method. We should try to only use it when we want to perform a specific action for each element of an array.
+A common pitfall
+.forEach() does not create a new array. In fact, it returns undefined! That means if we try to do something like this…
+const numbers = [2, 10, 3];
+const double = numbers.map((number) => {
+    return number * 2;
+})
+console.log(double);
+Output
+We get a log of undefined.
+ 
+.map()
+What is it?
+.map() is a lot like .forEach(), but it very helpfully creates and returns a new array as the below example shows:
+
+const numbers = [2, 10, 3];
+const double = numbers.map((number) => {
+    return number * 2;
+})
+console.log(double);
+
+Output
+[ 4, 20, 6 ]
+
+
+Unlike forEach, the code above returns a new array containing doubled numbers.
+When should I use this?
+Use .map() whenever you need to update data inside an array (by mapping over it!).  For example, perhaps you have a list of names and you want to capitalise them all. You might write:
+const names = ['sonu', 'monu', 'ram', 'shyam', 'sunil', 'anil', 'shankar', 'raaz'];
+const capitalized = names.map((name) => {
+    return name[0].toUpperCase() + name.slice(1);
+});
+console.log(capitalized);
+
+Output
+[
+  'Sonu',    'Monu',
+  'Ram',     'Shyam',
+  'Sunil',   'Anil',
+  'Shankar', 'Raaz'
+]
+
+
+
+.map() will always return a new array of the same length as the original!
+.filter()
+What is it?
+.filter() loops through (or iterates) through data, and filters out data that doesn't match the criteria that we set. We define what those criteria are through a truth test inside a function. For example, in the below case, we want to filter through an array to create a new array with only the three-letter words.
+
+const words = [
+    'cat',
+    'dog',
+    'owl',
+    'elephant',
+    'horse',
+    'chemal',
+    'buffalo',
+    'rabbit',
+    'cow'
+];
+
+const threeLetterWords = words.filter((word) => {
+    return word.length === 3;
+})
+console.log(threeLetterWords);
+
+Output
+[ 'cat', 'dog', 'owl', 'cow' ]
+
+For every element in the array, the function will be called. The function should return either true or false, to tell JavaScript whether that element should be included in the resulting array or not.
+When should I use this?
+This one is pretty straightforward: use it when you want to filter an array based on criteria you want to define yourself. For example, perhaps you have an array of objects which represent people, and you want to create a new list of only the people who live in Leeds:
+
+const people = [
+    { name: 'Charlie', age: 24, home: 'Leeds' },
+    { name: 'Kit', age: 40, home: 'Sheffield' },
+    { name: 'Noah', age: 18, home: 'Loverpool' },
+    { name: 'Gigi', age: 18, home: 'Leeds' },
+    { name: 'Karolina', age: 30, home: 'Stockport' },
+];
+
+const personInLeeds = people.filter((person) => {
+    return person.home === 'Leeds';
+})
+console.log(personInLeeds);
+
+
+Output
+[
+  { name: 'Charlie', age: 24, home: 'Leeds' },
+  { name: 'Gigi', age: 18, home: 'Leeds' }
+]
+
+
+
